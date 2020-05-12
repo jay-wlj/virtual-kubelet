@@ -16,3 +16,16 @@ func registerMock(s *provider.Store) {
 		)
 	})
 }
+
+
+func registerBoc(s *provider.Store) {
+	s.Register("boc", func(cfg provider.InitConfig) (provider.Provider, error) { //nolint:errcheck
+		return mock.NewMockProvider(
+			cfg.ConfigPath,
+			cfg.NodeName,
+			cfg.OperatingSystem,
+			cfg.InternalIP,
+			cfg.DaemonPort,
+		)
+	})
+}
