@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: vkubelet-mock-0
-    image: virtual-kubelet
+    image: jayden21/virtual-kubelet:v2.1.3
     # "IfNotPresent" is used to prevent Minikube from trying to pull from the registry (and failing) in the first place.
     imagePullPolicy: IfNotPresent
     args:
