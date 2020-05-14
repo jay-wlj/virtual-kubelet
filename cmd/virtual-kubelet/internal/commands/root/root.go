@@ -16,6 +16,8 @@ package root
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"os"
 	"path"
 
@@ -83,6 +85,11 @@ func runRootCommand(ctx context.Context, s *provider.Store, c Opts) error {
 	if err != nil {
 		return err
 	}
+
+	ns, err := client.CoreV1().Nodes().List(metav1.ListOptions{})
+	data, _ := json.Marshal(ns)
+	fmt.Println(string(data), " err:", err)
+	return nil
 
 	// Create a shared informer factory for Kubernetes pods in the current namespace (if specified) and scheduled to the current node.
 	podInformerFactory := kubeinformers.NewSharedInformerFactoryWithOptions(
